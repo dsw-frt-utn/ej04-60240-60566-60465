@@ -16,6 +16,8 @@ public class ListarVehiculosView extends javax.swing.JFrame {
         initComponents();
         listarVehiculos();
     }
+    
+    
     private void listarVehiculos(){
         ArrayList<VehiculoViewModel> vehiculos = Controlador.getVehiculos();
         vehiculosGrid.setModel(new DefaultTableModel(new Object[][] {}, 
@@ -158,13 +160,16 @@ public class ListarVehiculosView extends javax.swing.JFrame {
          TableModel table = vehiculosGrid.getModel();
          Map<String, Double> lista = new HashMap<>();
          for(int i=0;i< table.getRowCount();i++){
-             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 8));
+             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 7));
          }
+         
          double[] consumos = Controlador.calcularConsumos(lista);
          totalConsumoElectricosValue.setText(String.format("%.2f%n kWh", consumos[0]));
          totalConsumoCombustibleValue.setText(String.format("%.2f%n litros", consumos[1]));
     }//GEN-LAST:event_calcularConsumosActionPerformed
-
+    private void mostrarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarVehiculoActionPerformed
+         listarVehiculos();
+    }
     /**
      * @param args the command line arguments
      */
