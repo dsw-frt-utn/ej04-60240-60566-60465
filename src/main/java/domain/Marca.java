@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+=======
+
+>>>>>>> feature/marcas
 =======
 
 >>>>>>> feature/marcas
@@ -14,8 +18,13 @@ package domain;
  */
 public class Marca {
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String nombre,
     private String pais;
+=======
+    private String nombre;
+   private String pais;
+>>>>>>> feature/marcas
 =======
     private String nombre;
    private String pais;
@@ -27,11 +36,17 @@ public class Marca {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> feature/marcas
     public Marca(String nombre) {
         this.nombre = nombre;
     }
 
+<<<<<<< HEAD
+>>>>>>> feature/marcas
+=======
 >>>>>>> feature/marcas
     public String getNombre() {
         return nombre;
@@ -49,7 +64,10 @@ public class Marca {
         this.pais = pais;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
+=======
+>>>>>>> feature/marcas
 =======
 >>>>>>> feature/marcas
 }
