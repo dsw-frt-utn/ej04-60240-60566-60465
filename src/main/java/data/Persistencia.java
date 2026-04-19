@@ -30,9 +30,9 @@ public class Persistencia {
         
         Marca renault = new Marca("Renault", "Francia");
         Marca ford = new Marca("Ford", "EEUU");
-        Marca iveco = new Marca("Iveco", "Italia");
-        Marca mercedes = new Marca("Mercedes", "Alemania");
-
+        Marca iveco = new Marca("Iveco","Argentina");
+        Marca mercedes = new Marca("Mercedes", "Peru");
+        
         VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", renault, "Kangoo E-Tech", 2020, 1000, s1, 16);
         VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", ford, "E-Transit", 2021, 1300, s2, 16);
 

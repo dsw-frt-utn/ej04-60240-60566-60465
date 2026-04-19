@@ -11,3 +11,4 @@ views\VehiculoViewModel.class
 views\ListarVehiculosView.class
 domain\Sucursal.class
 views\ListarVehiculosView$2.class
+domain\VehiculoTipo.class
