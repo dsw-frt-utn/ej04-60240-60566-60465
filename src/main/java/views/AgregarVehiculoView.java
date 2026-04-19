@@ -65,6 +65,7 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
         txtKmLitro = new javax.swing.JTextField();
         txtLitrosExtra = new javax.swing.JTextField();
         botonAgregar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +109,13 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setText("VOLVER");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,8 +149,10 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
                             .addComponent(txtKmLitro)
                             .addComponent(txtLitrosExtra)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(botonAgregar)))
+                        .addGap(156, 156, 156)
+                        .addComponent(botonAgregar)
+                        .addGap(94, 94, 94)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,7 +200,9 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
                     .addComponent(txtLitrosExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLitrosExtra))
                 .addGap(28, 28, 28)
-                .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -276,6 +288,13 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboTipoActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MenuPrincipalView menu = new MenuPrincipalView();
+        menu.setVisible(true);
+
+        this.dispose();  
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,6 +332,7 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboSucursal;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel jLabel7;
