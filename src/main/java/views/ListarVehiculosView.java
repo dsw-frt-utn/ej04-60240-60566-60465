@@ -19,9 +19,7 @@ public class ListarVehiculosView extends javax.swing.JFrame {
         initComponents();
         cargarTabla();
     }
-
     /*private void listarVehiculos(){
-
         ArrayList<VehiculoViewModel> vehiculos = Controlador.getVehiculos();
         vehiculosGrid.setModel(new DefaultTableModel(new Object[][] {}, 
             new String[] { "Patente","Vehículo", "Tipo", "Sucursal", "Cap.Carga", "Km/litro", "Año", "Litros extra", "Km a recorrer" }));
@@ -58,7 +56,6 @@ public class ListarVehiculosView extends javax.swing.JFrame {
         totalConsumoCombustibleLabel = new javax.swing.JLabel();
         totalConsumoElectricosLabel = new javax.swing.JLabel();
         totalConsumoCombustibleValue = new javax.swing.JLabel();
-        mostrarVehiculo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Logística - Listar Vehículos");
@@ -132,13 +129,6 @@ public class ListarVehiculosView extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        mostrarVehiculo.setText("Mostrar Vehiculos");
-        mostrarVehiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarVehiculoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,9 +138,7 @@ public class ListarVehiculosView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calcularConsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(mostrarVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(calcularConsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -162,10 +150,7 @@ public class ListarVehiculosView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(calcularConsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mostrarVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(calcularConsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -175,7 +160,6 @@ public class ListarVehiculosView extends javax.swing.JFrame {
     private void calcularConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularConsumosActionPerformed
          TableModel table = vehiculosGrid.getModel();
          Map<String, Double> lista = new HashMap<>();
-
          for(int i = 0; i < table.getRowCount(); i++){
 
              String patente = table.getValueAt(i, 0).toString();
@@ -188,14 +172,11 @@ public class ListarVehiculosView extends javax.swing.JFrame {
             }
          }
 
-
          double[] consumos = Controlador.calcularConsumos(lista);
          totalConsumoElectricosValue.setText(String.format("%.2f%n kWh", consumos[0]));
          totalConsumoCombustibleValue.setText(String.format("%.2f%n litros", consumos[1]));
     }//GEN-LAST:event_calcularConsumosActionPerformed
-    private void mostrarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {                                                
-         listarVehiculos();
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -235,7 +216,6 @@ public class ListarVehiculosView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularConsumos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton mostrarVehiculo;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel totalConsumoCombustibleLabel;
     private javax.swing.JLabel totalConsumoCombustibleValue;

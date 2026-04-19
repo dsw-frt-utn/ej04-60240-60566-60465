@@ -1,7 +1,6 @@
 package domain;
 
 import java.time.LocalDate;
-import domain.Marca;
 
 public class VehiculoCombustible extends Vehiculo {
     private double kilometrosPorLitro;

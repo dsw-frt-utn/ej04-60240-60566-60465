@@ -1,7 +1,5 @@
 package domain;
 
-import domain.Marca;
-
 public class VehiculoElectrico extends Vehiculo {
     private double kwhBase;
 
@@ -9,12 +7,12 @@ public class VehiculoElectrico extends Vehiculo {
         super(VehiculoTipo.ELECTRICO, patente, marca, modelo, anio, capacidadCarga, sucursal);
         this.kwhBase = kwhBase;
     }
-    
+
     @Override
     public double calcularConsumo(double kilometros) {
         double total = kwhBase;
 
-        if (capacidadCarga >= 1200) {
+        if (capacidadCarga > 1200) {
             total = total * 1.15;
         }
 
