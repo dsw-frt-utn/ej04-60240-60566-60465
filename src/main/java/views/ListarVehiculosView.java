@@ -1,5 +1,8 @@
 package views;
 
+import data.Persistencia;
+import domain.Vehiculo;
+import domain.VehiculoCombustible;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +17,11 @@ public class ListarVehiculosView extends javax.swing.JFrame {
      */
     public ListarVehiculosView() {
         initComponents();
-        listarVehiculos();
+        cargarTabla();
     }
-    
-    
-    private void listarVehiculos(){
+
+    /*private void listarVehiculos(){
+
         ArrayList<VehiculoViewModel> vehiculos = Controlador.getVehiculos();
         vehiculosGrid.setModel(new DefaultTableModel(new Object[][] {}, 
             new String[] { "Patente","Vehículo", "Tipo", "Sucursal", "Cap.Carga", "Km/litro", "Año", "Litros extra", "Km a recorrer" }));
@@ -36,7 +39,7 @@ public class ListarVehiculosView extends javax.swing.JFrame {
                 vehiculo.getKmARecorrer()
             });
         }
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,10 +175,20 @@ public class ListarVehiculosView extends javax.swing.JFrame {
     private void calcularConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularConsumosActionPerformed
          TableModel table = vehiculosGrid.getModel();
          Map<String, Double> lista = new HashMap<>();
-         for(int i=0;i< table.getRowCount();i++){
-             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 7));
+
+         for(int i = 0; i < table.getRowCount(); i++){
+
+             String patente = table.getValueAt(i, 0).toString();
+
+             Object kmObj = table.getValueAt(i, 8);
+
+             if(kmObj != null && !kmObj.toString().isEmpty()){
+                 double km = Double.parseDouble(kmObj.toString());
+                 lista.put(patente, km);
+            }
          }
-         
+
+
          double[] consumos = Controlador.calcularConsumos(lista);
          totalConsumoElectricosValue.setText(String.format("%.2f%n kWh", consumos[0]));
          totalConsumoCombustibleValue.setText(String.format("%.2f%n litros", consumos[1]));
@@ -231,4 +244,37 @@ public class ListarVehiculosView extends javax.swing.JFrame {
     private javax.swing.JTable vehiculosGrid;
     // End of variables declaration//GEN-END:variables
 
+    private void cargarTabla(){
+
+        javax.swing.table.DefaultTableModel modelo = 
+        (javax.swing.table.DefaultTableModel) vehiculosGrid.getModel();
+
+        modelo.setRowCount(0);
+
+        for(Vehiculo v : Persistencia.getVehiculos()){
+
+            double kmPorLitro = 0;
+            double litrosExtra = 0;
+
+        
+            if(v instanceof VehiculoCombustible){
+                VehiculoCombustible vc = (VehiculoCombustible) v;
+                kmPorLitro = vc.getKilometrosPorLitro();
+                litrosExtra = vc.getLitrosExtra();
+            }
+
+            modelo.addRow(new Object[]{
+                v.getPatente(),
+                v.toString(),                 
+                v.getTipo(),
+                v.getCodigoSucursal(),
+                v.getCapacidadCarga(),
+                kmPorLitro,                   
+                v.getAnio(),
+                litrosExtra,                  
+                100.0                           
+            });
+        }
+        
+    }
 }
