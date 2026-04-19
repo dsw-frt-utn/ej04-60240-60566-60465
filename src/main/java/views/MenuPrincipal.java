@@ -42,6 +42,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        AgregarVehiculoView agregar = new AgregarVehiculoView();
+        agregar.setVisible(true);   
+    }                                        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        ListarVehiculosView lista = new ListarVehiculosView();
+        lista.setVisible(true);        
+    }       
+    
     /**
      * @param args the command line arguments
      */
@@ -77,6 +87,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
     }
 
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
