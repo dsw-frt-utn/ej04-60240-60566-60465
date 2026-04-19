@@ -8,6 +8,8 @@ package domain;
  *
  * @author sofia
  */
+
+//PR para corregir mi flujo de trabajo
 public class Marca {
     private String nombre;
     private String pais;
