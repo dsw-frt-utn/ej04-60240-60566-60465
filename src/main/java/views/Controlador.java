@@ -1,6 +1,7 @@
 package views;
 
 import data.Persistencia;
+import domain.Sucursal;
 import domain.Vehiculo;
 import domain.VehiculoTipo;
 import java.util.ArrayList;
@@ -30,5 +31,22 @@ public class Controlador {
            }
         }
         return new double[] {consumoElectricos, consumoCombustible};
+    }
+    
+    public static void agregarVehiculo(Vehiculo v){
+        Persistencia.getVehiculos().add(v);
+    }
+
+    public static ArrayList<Sucursal> getSucursales(){
+        return Persistencia.getSucursales();
+    }
+
+    public static Sucursal buscarSucursalPorCodigo(String codigo){
+        for(Sucursal s : Persistencia.getSucursales()){
+            if(s.getCodigo().equals(codigo)){
+                return s;
+            }
+        }
+        return null;
     }
 }

@@ -1,14 +1,14 @@
 package views;
 
-import data.Persistencia;
-import domain.Vehiculo;
-import domain.VehiculoCombustible;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import views.Controlador;
+import views.VehiculoViewModel;
 
 public class ListarVehiculosView extends javax.swing.JFrame {
 
@@ -252,30 +252,19 @@ public class ListarVehiculosView extends javax.swing.JFrame {
 
         modelo.setRowCount(0);
 
-        for(Vehiculo v : Persistencia.getVehiculos()){
-
-            double kmPorLitro = 0;
-            double litrosExtra = 0;
-
-        
-            if(v instanceof VehiculoCombustible){
-                VehiculoCombustible vc = (VehiculoCombustible) v;
-                kmPorLitro = vc.getKilometrosPorLitro();
-                litrosExtra = vc.getLitrosExtra();
-            }
+        for(VehiculoViewModel v : Controlador.getVehiculos()){
 
             modelo.addRow(new Object[]{
                 v.getPatente(),
-                v.toString(),                 
+                v.getVehiculo(),
                 v.getTipo(),
-                v.getCodigoSucursal(),
+                v.getSucursal(),
                 v.getCapacidadCarga(),
-                kmPorLitro,                   
+                v.getKmPorLitro(),
                 v.getAnio(),
-                litrosExtra,                  
-                100.0                           
+                v.getLitrosExtra(),
+                v.getKmARecorrer()
             });
         }
-        
     }
 }

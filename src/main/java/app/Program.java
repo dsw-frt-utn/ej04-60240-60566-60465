@@ -2,7 +2,6 @@ package app;
 
 import data.Persistencia;
 import java.util.InvalidPropertiesFormatException;
-import views.ListarVehiculosView;
 import views.MenuPrincipalView;
 
 public class Program {
