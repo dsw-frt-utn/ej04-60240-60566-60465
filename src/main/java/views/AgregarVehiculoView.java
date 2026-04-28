@@ -5,12 +5,12 @@
  */
 package views;
 
-import data.Persistencia;
 import domain.Marca;
 import domain.Sucursal;
 import domain.Vehiculo;
 import domain.VehiculoCombustible;
 import domain.VehiculoElectrico;
+import views.Controlador; 
 
 /**
  *
@@ -30,7 +30,7 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
         txtLitrosExtra.setVisible(false);
         lblKmLitro.setVisible(false);
         lblLitrosExtra.setVisible(false);
-        for(Sucursal s : Persistencia.getSucursales()){
+        for(Sucursal s : Controlador.getSucursales()){
         comboSucursal.addItem(s.getCodigo());
         }
     }
@@ -227,13 +227,7 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
 
         String codigo = comboSucursal.getSelectedItem().toString();
 
-        Sucursal sucursal = null;
-
-        for(Sucursal s : Persistencia.getSucursales()){
-            if(s.getCodigo().equals(codigo)){
-            sucursal = s;
-            }
-        }
+        Sucursal sucursal = Controlador.buscarSucursalPorCodigo(codigo);
 
         String tipo = comboTipo.getSelectedItem().toString();
 
@@ -255,7 +249,7 @@ public class AgregarVehiculoView extends javax.swing.JFrame {
         }
 
 
-        Persistencia.getVehiculos().add(v);
+        Controlador.agregarVehiculo(v);
 
 
         javax.swing.JOptionPane.showMessageDialog(this, "Vehiculo agregado");
